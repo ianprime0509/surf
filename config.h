@@ -199,4 +199,6 @@ static Button buttons[] = {
 /* Search engines. */
 static SearchEngine searchengines[] = {
 	{ "ddg", "https://duckduckgo.com/?q=%s" },
+	{ "w",   "https://en.wikipedia.org/wiki/Special:Search/%s" },
+	{ "wt",  "https://en.wiktionary.org/wiki/Special:Search/%s" },
 };
