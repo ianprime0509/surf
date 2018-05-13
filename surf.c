@@ -347,6 +347,7 @@ setup(void)
 	scriptfile = buildfile(scriptfile);
 	cachedir   = buildpath(cachedir);
 	certdir    = buildpath(certdir);
+	downloaddir = buildpath(downloaddir);
 
 	gdkkb = gdk_seat_get_keyboard(gdk_display_get_default_seat(gdpy));
 
@@ -1055,6 +1056,7 @@ cleanup(void)
 	g_free(scriptfile);
 	g_free(stylefile);
 	g_free(cachedir);
+	g_free(downloaddir);
 	XCloseDisplay(dpy);
 }
 
