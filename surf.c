@@ -1703,9 +1703,14 @@ parseuri(const gchar *uri) {
 		if (searchengines[i].token == NULL || searchengines[i].uri == NULL ||
 		    *(uri + strlen(searchengines[i].token)) != ' ')
 			continue;
-		if (g_str_has_prefix(uri, searchengines[i].token))
-			return g_strdup_printf(searchengines[i].uri,
-					       uri + strlen(searchengines[i].token) + 1);
+		if (g_str_has_prefix(uri, searchengines[i].token)) {
+			const gchar *query = uri + strlen(searchengines[i].token) + 1;
+			gchar *escaped = g_uri_escape_string(query, NULL, FALSE);
+			gchar *ret = g_strdup_printf(searchengines[i].uri,
+			                             escaped);
+			g_free(escaped);
+			return ret;
+		}
 	}
 
 	return g_strdup_printf("http://%s", uri);
